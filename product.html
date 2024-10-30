@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Product Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">EShop</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="cart.html">Cart</a></li>
+        </ul>
+    </nav>
+
+    <!-- Product Details Section -->
+    <section class="product-details">
+      <div class="product-image">
+          <img src="imgs/pi1.jpg" alt="Selected Product">
+      </div>
+      <div class="product-info">
+          <h1>Harry Potter: The Complete Collection by J.K. Rowling</h1>
+          <p class="product-description">When Harry Potter is left on a doorstep as a baby, he has no idea he is the Boy Who Lived, or that he is famous throughout the wizarding world. Years later, he is astonished to receive an acceptance letter to Hogwarts School of Witchcraft and Wizardry and he is soon whisked off on a magical adventure like no other. Join Harry and his fiercely loyal friends, Hermione and Ron, in this story about the power of truth, love and hope.</p>
+          <p class="product-price">$54.94</p>
+          <button id="addToCartButton" onclick="addToCart('Harry Potter: The Complete Collection by J.K. Rowling',54.94)">Add to Cart</button>
+      </div>
+    </section>
+
+    <!-- Related Products Section -->
+    <section class="related-products">
+        <h2>Related Products</h2>
+        <div class="product-grid">
+            <div class="related-product">
+                <a href="product.html?id=2"><img src="imgs/pi2.jpg" alt="Related Product 1"></a>
+                <p>Hunger Games: Complete Box Set by Suzanne Collins</p>
+                <p class="product-price">$31.94</p>
+            </div>
+            <div class="related-product">
+                <a href="product.html?id=3"><img src="imgs/pi3.jpg" alt="Related Product 2"></a>
+                <p>The Twilight Saga Complete Collection by Stephenie Meyer</p>
+                <p class="product-price">$62.99</p>
+            </div>
+            <div class="related-product">
+                <a href="product.html?id=1"><img src="imgs/pi1.jpg" alt="Related Product 3"></a>
+                <p>Harry Potter: The Complete Collection by J.K. Rowling</p>
+                <p class="product-price">$54.94</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section class="customer-reviews">
+        <h2>Customer Reviews</h2>
+        <div class="review">
+            <p class="review-author">John Doe</p>
+            <p class="review-text">Great product! Highly recommend it.</p>
+            <p class="review-rating">Rating: ⭐⭐⭐⭐☆</p>
+        </div>
+        <div class="review">
+            <p class="review-author">Jane Smith</p>
+            <p class="review-text">Good quality but took a bit long to arrive.</p>
+            <p class="review-rating">Rating: ⭐⭐⭐⭐☆</p>
+        </div>
+        <div class="review">
+            <p class="review-author">Alice Brown</p>
+            <p class="review-text">Satisfied with the purchase. Will buy again!</p>
+            <p class="review-rating">Rating: ⭐⭐⭐⭐⭐</p>
+        </div>
+    </section>
+
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        // Product details array
+        const products = {
+            1: {
+                name: "Harry Potter: The Complete Collection by J.K. Rowling",
+                price: "$54.94",
+                description: "When Harry Potter is left on a doorstep as a baby, he has no idea he is the Boy Who Lived, or that he is famous throughout the wizarding world. Years later, he is astonished to receive an acceptance letter to Hogwarts School of Witchcraft and Wizardry and he is soon whisked off on a magical adventure like no other. Join Harry and his fiercely loyal friends, Hermione and Ron, in this story about the power of truth, love and hope.",
+                image: "imgs/pi1.jpg",
+            },
+            2: {
+                name: "Hunger Games: Complete Box Set by Suzanne Collins",
+                price: "$31.94",
+                description: "This beautiful paperback box set includes all three books in Suzanne Collins's internationally bestselling Hunger Games trilogy together with The Ballad of Songbirds and Snakes. In the ruins of a place once known as North America lies the nation of Panem, a shining Capitol surrounded by twelve outlying districts. The Capitol keeps the districts in line by forcing them all to send one boy and one girl between the ages of twelve and eighteen to participate in the annual Hunger Games, a fight to the death on live TV... And the odds are against all who play. With all four of Suzanne Collins's Hunger Games novels in one box set, you can step into the world of Panem with the 10th annual Hunger Games, and continue all the way to the electrifying conclusion.",
+                image: "imgs/pi2.jpg",
+            },
+            3: {
+                name: "The Twilight Saga Complete Collection by Stephenie Meyer",
+                price: "$62.99",
+                description: "A gorgeous paperback boxed set of the Twilight Saga featuring the latest #1 NYT and USA Today bestseller, Midnight Sun, and the rest of the series with a bold, fresh design. This stunning gift set includes paperback editions of Twilight, New Moon, Eclipse, Breaking Dawn, Midnight Sun, The Short Second Life of Bree Tanner, and Life & Death, making it the prime gift for fans of the bestselling series. Deeply romantic and extraordinarily suspenseful, The Twilight Saga captures the struggle between defying our instincts and satisfying our desires.",
+                image: "imgs/pi3.jpg",
+            },
+        };
+
+        // Set product details based on ID
+        if (productId && products[productId]) {
+            document.querySelector('.product-image').src = products[productId].image;
+            document.getElementById('product-name').innerText = products[productId].name;
+            document.getElementById('product-description').innerText = products[productId].description;
+            document.getElementById('product-price').innerText = products[productId].price;
+        }
+    </script>
+
+</body>
+</html>
